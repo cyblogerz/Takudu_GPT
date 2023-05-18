@@ -1,21 +1,22 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:takudu_gpt/presentation/providers/chat_provider.dart';
+import 'package:takudu_gpt/presentation/widgets/message_stream.dart';
 
 import '../../utils/constants.dart';
+import '../widgets/chat_entry.dart';
 
-class ChatHome extends StatefulWidget {
+class ChatHome extends ConsumerStatefulWidget {
   const ChatHome({super.key});
 
   @override
-  State<ChatHome> createState() => _ChatHomeState();
+  ConsumerState<ChatHome> createState() => _ChatHomeState();
 }
 
-class _ChatHomeState extends State<ChatHome> {
-  late String messageText;
-  final messageTextController = TextEditingController();
-
+class _ChatHomeState extends ConsumerState<ChatHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,53 +45,7 @@ class _ChatHomeState extends State<ChatHome> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(),
-          Container(
-            padding: EdgeInsets.only(bottom: 20),
-            decoration: kMessageContainerDecoration,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.attach_file,
-                      color: Colors.grey,
-                    )),
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.camera_alt,
-                      color: Colors.grey,
-                    )),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(129, 165, 165, 165),
-                      borderRadius: BorderRadius.all(Radius.circular(23)),
-                    ),
-                    child: TextField(
-                      controller: messageTextController,
-                      onChanged: (value) {
-                        messageText = value;
-                        //Do something with the user input.
-                      },
-                      decoration: kMessageTextFieldDecoration,
-                    ),
-                  ),
-                ),
-                TextButton(
-                    onPressed: () {
-                      messageTextController.clear();
-
-                      //Implement send functionality.
-                    },
-                    child: Icon(Icons.send)),
-              ],
-            ),
-          )
-        ],
+        children: [Expanded(child: MessageStream()), ChatEntry()],
       ),
     );
   }
