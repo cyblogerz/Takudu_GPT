@@ -11,7 +11,6 @@ class ChatEntry extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      padding: const EdgeInsets.only(bottom: 20),
       decoration: kMessageContainerDecoration,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,12 +21,12 @@ class ChatEntry extends ConsumerWidget {
                 Icons.attach_file,
                 color: Colors.grey,
               )),
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.camera_alt,
-                color: Colors.grey,
-              )),
+          // IconButton(
+          //     onPressed: () {},
+          //     icon: const Icon(
+          //       Icons.camera_alt,
+          //       color: Colors.grey,
+          //     )),
           Expanded(
             child: Container(
               decoration: const BoxDecoration(

@@ -16,29 +16,30 @@ class MessageBubble extends StatelessWidget {
           children: [
             Container(
               constraints: const BoxConstraints(minWidth: 0, maxWidth: 200),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30.0),
                     topLeft: Radius.circular(30.0),
                     bottomRight: Radius.circular(30.0)),
-                gradient: LinearGradient(
-                  colors: [Colors.purple, Colors.deepPurple, Colors.blueAccent],
-                  begin: Alignment.bottomRight,
-                  end: Alignment.topLeft,
-                ),
+                // gradient: LinearGradient(
+                //   colors: [Colors.purple, Colors.deepPurple, Colors.blueAccent],
+                //   begin: Alignment.bottomRight,
+                //   end: Alignment.topLeft,
+                // ),
+                color: Theme.of(context).colorScheme.primary,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.deepPurple,
-                    offset: Offset(
-                      3.0,
-                      0.0,
+                    color: Color.fromARGB(255, 183, 183, 183),
+                    offset: const Offset(
+                      5.0,
+                      5.0,
                     ),
-                    blurRadius: 2.0,
-                    spreadRadius: 1.0,
+                    blurRadius: 10.0,
+                    spreadRadius: 2.0,
                   ), //BoxShadow
                   BoxShadow(
                     color: Colors.white,
-                    offset: Offset(0.0, 0.0),
+                    offset: const Offset(0.0, 0.0),
                     blurRadius: 0.0,
                     spreadRadius: 0.0,
                   ), //BoxShadow
@@ -76,7 +77,7 @@ class MessageBubble extends StatelessWidget {
               // elevation: 5.0,
               constraints: BoxConstraints(minWidth: 0, maxWidth: 200),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.primaryContainer,
                 boxShadow: [
                   BoxShadow(
                     color: Color.fromARGB(255, 183, 183, 183),
@@ -103,14 +104,8 @@ class MessageBubble extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     vertical: 10.0, horizontal: 20.0),
-                child: Text(
-                  text == null ? '' : text,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontFamily: 'Metropolis',
-                  ),
-                ),
+                child: Text(text == null ? '' : text,
+                    style: Theme.of(context).textTheme.bodyLarge),
               ),
             ),
           ],

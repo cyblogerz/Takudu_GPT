@@ -20,15 +20,20 @@ class _ChatHomeState extends ConsumerState<ChatHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
-                CircleAvatar(),
-                SizedBox(
-                  width: 10,
+                IconButton(
+                  iconSize: 35,
+                  icon: Icon(
+                    Icons.account_circle,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  onPressed: () {},
                 ),
                 Text("Takudu GPT"),
               ],
@@ -42,10 +47,12 @@ class _ChatHomeState extends ConsumerState<ChatHome> {
           ],
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [Expanded(child: MessageStream()), ChatEntry()],
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [Expanded(child: MessageStream()), ChatEntry()],
+        ),
       ),
     );
   }
