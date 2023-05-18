@@ -5,6 +5,3 @@ final lightTheme1 = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light);
 
-// final darkTheme1 = ThemeData.dark().copyWith(
-//   primaryColor: Colors.purple
-// );
